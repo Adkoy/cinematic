@@ -15,11 +15,15 @@ class CreateShowsTable extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
-            $table->integer('movie_id');
-            $table->integer('hall_id');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->time('time');
             $table->date('date');
+            $table->string('weekday');
+            $table->decimal('price', 13, 0)->nullable();
+
+            $table->unsignedTinyInteger('cinema_id')->foreign('cinema_id')->references('id')->on('cinemas');
+            $table->unsignedTinyInteger('hall_id')->foreign('hall_id')->references('id')->on('halls');
+            $table->unsignedTinyInteger('movie_id')->foreign('movie_id')->references('id')->on('movies');
+
             $table->timestamps();
         });
     }

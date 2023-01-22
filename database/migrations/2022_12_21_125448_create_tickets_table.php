@@ -15,11 +15,14 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('cinema_id');
-            $table->integer('hall_id');
-            $table->integer('show_id');
-            $table->integer('movie_id');
+            $table->tinyInteger('status')->default(0);
+
+            $table->unsignedTinyInteger('user_id')->foreign('user_id')->references('id')->on('users');
+            $table->unsignedTinyInteger('cinema_id')->foreign('cinema_id')->references('id')->on('cinemas');
+            $table->unsignedTinyInteger('hall_id')->foreign('hall_id')->references('id')->on('halls');
+            $table->unsignedTinyInteger('show_id')->foreign('show_id')->references('id')->on('shows');
+            $table->unsignedTinyInteger('movie_id')->foreign('movie_id')->references('id')->on('movies');
+
             $table->timestamps();
         });
     }

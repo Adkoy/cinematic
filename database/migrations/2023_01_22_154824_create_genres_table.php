@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeekdaysTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateWeekdaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('weekdays', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->id();
-            $table->integer('cinema_id');
-            $table->enum('day', ['Saturday', 'Sunday', 'Monday','Tuesday', 'Wednesday', 'Thursday','Friday']);
-            $table->time('open_time');
-            $table->time('close_time');
+            $table->string('key');
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateWeekdaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weekdays');
+        Schema::dropIfExists('genres');
     }
 }

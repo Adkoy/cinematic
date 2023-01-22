@@ -15,10 +15,11 @@ class CreateHallsTable extends Migration
     {
         Schema::create('halls', function (Blueprint $table) {
             $table->id();
-            $table->integer('cinema_id');
             $table->string('name');
-            $table->integer('seat_count');
-            $table->string('place');
+            $table->integer('capacity');
+
+            $table->unsignedTinyInteger('cinema_id')->foreign('cinema_id')->references('id')->on('cinemas');
+
             $table->timestamps();
         });
     }

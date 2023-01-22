@@ -15,11 +15,14 @@ class CreateSeatsTable extends Migration
     {
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
-            $table->integer('hall_id');
-            $table->integer('cinema_id');
-            $table->enum('status',['empty','reserved','booked','returned']);
-            $table->integer('price');
+            $table->tinyInteger('status')->default(0);
+            $table->decimal('price', 13, 0)->nullable();
             $table->string('place');
+
+            $table->unsignedTinyInteger('hall_id')->foreign('hall_id')->references('id')->on('halls');
+            $table->unsignedTinyInteger('cinema_id')->foreign('cinema_id')->references('id')->on('cinemas');
+
+
             $table->timestamps();
         });
     }
