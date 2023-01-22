@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
             $table->text('photo')->nullable();
             $table->decimal('wallet', 13, 0)->nullable()->default(0);
 
-            $table->unsignedTinyInteger('authorization_id')->default(0)
-                        ->foreign('authorization_id')->references('id')->on('authorizations');
+            $table->unsignedTinyInteger('role_id')->default(0)
+                        ->foreign('role_id')->references('id')->on('roles');
 
             $table->rememberToken();
             $table->timestamps();

@@ -21,6 +21,7 @@ class CreateMoviesTable extends Migration
             $table->text('poster')->nullable();
             $table->text('teaser')->nullable();
             $table->float('rate', 2, 1)->default(1.0);
+            $table->integer('voters_count')->default(0);
 
             $table->timestamps();
         });

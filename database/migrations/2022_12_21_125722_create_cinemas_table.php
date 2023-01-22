@@ -21,6 +21,7 @@ class CreateCinemasTable extends Migration
             $table->text('address');
             $table->longText('description')->nullable();
             $table->float('avg_rate', 2, 1)->default(1.0);
+            $table->integer('voters_count')->default(0);
 
             $table->float('accessibility_rate', 2, 1)->default(1.0);
             $table->float('facility_rate', 2, 1)->default(1.0);
