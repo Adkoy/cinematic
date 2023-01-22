@@ -8,10 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Hall extends Model
 {
     use HasFactory;
-    public function shows(){
-        return $this->hasMany(Show::class);
+    protected $fillable = [
+        'name',
+        'capacity',
+    ];
+
+    public function movie(){
+        return $this->belongsTo(Movie::class);
     }
-    public function weekdays(){
-        return $this->hasMany(Weekday::class);
+    public function tickets(){
+        return $this->hasMany(Ticket::class);
+    }
+    public function show(){
+        return $this->belongsToMany(Show::class);
+    }
+    public function cinema(){
+        return $this->belongsTo(Cinema::class);
+    }
+    public function seats(){
+        return $this->hasMany(Seat::class);
     }
 }

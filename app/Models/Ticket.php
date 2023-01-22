@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'status',
+    ];
+
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -22,5 +27,8 @@ class Ticket extends Model
     }
     public function movie(){
         return $this->belongsTo(Movie::class);
+    }
+    public function seat(){
+        return $this->belongsTo(Seat::class);
     }
 }
